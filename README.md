@@ -18,20 +18,27 @@ The sentiment scores will be used to track daily news sentiment, providing valua
 ## Usage
 
 1. Clone the repository:
+```bash
 git clone https://github.com/HiraStanley/headline-sentiment-scorer.git
 cd headline-sentiment-scorer
-
+```
 2. Install required packages:
+```bash
 pip install -r requirements.txt
-
+```
 3. Run the headline scraper:
+```bash
 python headline_scraper.py
-
+```
 You will be prompted to enter the source (chicagotribune, nyt): nyt. LA Times denies access requests.
 
 4. Run the sentiment scorer:
+```bash
 python score_headlines.py <input_file> <source>
+```
 
 Example:
+```bash
 python score_headlines.py sample_headlines.txt chicagotribune
+```
 
