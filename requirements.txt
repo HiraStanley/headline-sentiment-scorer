@@ -1,0 +1,9 @@
+# Needed for main
+numpy==1.26.4
+joblib==1.5.1
+sentence-transformers==4.1.0
+scikit-learn==1.5.1
+
+# Needed for web scraping
+beautifulsoup4==4.12.3
+requests==2.32.3
