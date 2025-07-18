@@ -18,53 +18,42 @@ The sentiment scores will be used to track daily news sentiment, providing valua
 
 ## Main Setup
 
-1. Clone the repository:
+1. Clone the repository
 ```bash
 git clone https://github.com/HiraStanley/headline-sentiment-scorer.git
 cd headline-sentiment-scorer
 ```
-2. (Optional) Create and activate a virtual environment:
+2. (Optional) Create and activate a virtual environment
 ```bash
 python -m venv pmle
 pmle\Scripts\activate
 ```
-3. Install required packages:
+3. Install required packages
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Batch Scoring (Offline)
-1. Run the headline scraper. You will be prompted to enter the source (chicagotribune, nyt): nyt. LA Times denies access requests.:
+1. Run the headline scraper. You will be prompted to enter the source (chicagotribune, nyt)
 ```bash
 python headline_scraper.py
 ```
-2. Run the sentiment scorer:
+2. Run the sentiment scorer
 ```bash
 python score_headlines.py <input_file> <source>
-```
-Example:
-```bash
 python score_headlines.py sample_headlines.txt chicagotribune
 ```
 
 ## Real-Time Scoring via FastAPI
-1. Run the API server:
+1. Run the API server
 ```bash
 uvicorn score_headlines_api:app --host 0.0.0.0 --port {}
 ```
-2. Check server status:
+2. Check server status (should return {"status": "ok"})
 ```bash
 curl http://localhost:{}/status
 ```
-Expected output:
-{"status": "ok"}
-insert
-```
-3. Send headlines for real-time scoring:
+3. Send headlines for real-time scoring (should return {"labels": ["Optimistic", "Pessimistic"]})
 ```bash
-curl -X POST http://localhost:{}/score_headlines -H "Content-Type: application/json" -d "{\"headlines\": [\"Stocks come crashing\", \"1000 Murdered\"]}"
-```
-Expected output:
-```bash
-{"labels": ["Pessimistic", "Pessimistic"]}
+curl -X POST http://localhost:{}/score_headlines -H "Content-Type: application/json" -d "{\"headlines\": [\"Stocks soar\", \"1000 Murdered\"]}"
 ```
