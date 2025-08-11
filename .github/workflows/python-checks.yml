@@ -29,10 +29,19 @@ jobs:
         pip install -r requirements.txt
         pip install pylint black mypy pytest
         pip install types-requests types-beautifulsoup4
+        pip install types-streamlit
+
+    - name: Configure mypy to ignore joblib only
+      run: |
+        echo "[mypy]" > mypy.ini
+        echo "ignore_missing_imports = False" >> mypy.ini
+        echo "" >> mypy.ini
+        echo "[mypy-joblib.*]" >> mypy.ini
+        echo "ignore_missing_imports = True" >> mypy.ini
 
     - name: Run pylint
       run: |
-        pylint --disable=C0114,C0116 tests/
+        pylint tests/
 
     - name: Run mypy
       run: |
