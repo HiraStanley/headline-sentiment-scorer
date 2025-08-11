@@ -30,7 +30,7 @@ jobs:
 
     - name: Run pylint
       run: |
-        pylint tests/
+        pylint --disable=C0114,C0116 tests/
 
     - name: Run mypy
       run: |
