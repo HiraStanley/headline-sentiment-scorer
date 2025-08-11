@@ -60,7 +60,8 @@ def main():
 
     # Build output filename
     TODAY = date.today().strftime('%Y_%m_%d')
-    output_filename = f"headline_scores_{source}_{TODAY}.txt"
+    #output_filename = f"headline_scores_{source}_{TODAY}.txt"
+    output_filename = f"/app/data/headline_scores_hirastanley_{source}_{TODAY}.txt"
 
     # Write results to file
     with open(output_filename, 'w', encoding='utf-8') as file:
